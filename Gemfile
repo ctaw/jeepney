@@ -50,3 +50,7 @@ gem 'slim-rails'
 # Paperclip gem for managing file uploads
 gem 'paperclip', '~> 3.0'
 
+gem 'will_paginate'
+
+gem 'geocoder' # Plan B
+

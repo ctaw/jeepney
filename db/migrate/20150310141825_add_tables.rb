@@ -3,8 +3,8 @@ class AddTables < ActiveRecord::Migration
     create_table :routes do |t|
       t.string :start_name
       t.string :end_name
-      t.string :longitude
-      t.string :latitude
+      t.float :longitude
+      t.float :latitude
       t.integer :no_of_way
       t.string :route_distance
       # Plan A
