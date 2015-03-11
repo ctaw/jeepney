@@ -9,5 +9,9 @@ Rails.application.routes.draw do
     resources :routes
     resources :fares
   end
+
+  namespace :api do
+    resources :routes, :defaults => { :format => 'xml' }
+  end
   
 end

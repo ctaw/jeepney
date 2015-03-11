@@ -14,6 +14,7 @@
 //= require ./vendor/bootstrap/fileinput
 //= require ./vendor/others/numeric
 
+
 //= require_tree ./vendor/datepicker
 //= require_tree ./vendor/summernote
 

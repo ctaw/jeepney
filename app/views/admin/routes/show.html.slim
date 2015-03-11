@@ -1,0 +1,11 @@
+.block-flat
+  .header
+    a.btn.btn-default.pull-right href="/admin/routes" Back
+    h4 Routes
+  .content
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-body
+            p.title = @route.start_name + " to " + @route.end_name
+            hr

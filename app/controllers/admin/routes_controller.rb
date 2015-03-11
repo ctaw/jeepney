@@ -3,7 +3,7 @@ class Admin::RoutesController < AdminController
   before_action :look_ups, :only => [:edit, :update, :show, :destroy]
 
   def index
-    @routes = Route.select("id,start_name,end_name,longitude,latitude").
+    @routes = Route.select("id,start_name,end_name").
     paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -52,6 +52,7 @@ class Admin::RoutesController < AdminController
   end
 
   def route_params
-    params.require(:route).permit(:start_name, :end_name, :longitude, :latitude, :no_of_way, :route_distance, :encoded_polyline, :encoded_level)
+    params.require(:route).permit(:start_name, :end_name, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :no_of_way)
+    # params.require(:route).permit(:start_name, :end_name, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :no_of_way, :route_distance, :encoded_polyline, :encoded_level)
   end
 end

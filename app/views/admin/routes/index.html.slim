@@ -17,8 +17,6 @@
             tr
               th Departure 
               th Arrival
-              th Longitude
-              th Latitude
               th
           tbody.no-border-y
             tr
@@ -26,8 +24,6 @@
                 tr
                   td = r.start_name
                   td = r.end_name
-                  td = r.longitude
-                  td = r.latitude
                   td
                     .btn-group.pull-right
                       a.btn.btn-info href="/admin/routes/#{r.id}"

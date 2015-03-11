@@ -29,12 +29,14 @@ ActiveRecord::Schema.define(version: 20150310141825) do
   create_table "routes", force: true do |t|
     t.string   "start_name"
     t.string   "end_name"
-    t.string   "longitude"
-    t.string   "latitude"
     t.integer  "no_of_way"
     t.string   "route_distance"
     t.text     "encoded_polyline"
     t.text     "encoded_level"
+    t.float    "start_latitude"
+    t.float    "start_longitude"
+    t.float    "end_latitude"
+    t.float    "end_longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

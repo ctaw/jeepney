@@ -1,20 +1,42 @@
 = form_for [:admin,@route], :remote=>true do |f|
   .row
-    .col-md-3
+    .col-md-12
+    
+  .row
+    .col-md-4
       .form-group
         label Start Location
         = f.text_field :start_name, :class=>"form-control input-sm required"
-    .col-md-3
+    .col-md-4
+      .form-group.hidden
+        label Longitude
+        = f.text_field :start_latitude, :class=>"form-control input-sm"
+    .col-md-4
+      .form-group.hidden
+        label Latitude
+        = f.text_field :start_longitude, :class=>"form-control input-sm"
+  .row
+    .col-md-4
       .form-group
         label End Location
         = f.text_field :end_name, :class=>"form-control input-sm required"
-    .col-md-3
-      .form-group
+    .col-md-4
+      .form-group.hidden
         label Longitude
-        = f.text_field :longitude, :class=>"form-control input-sm"
+        = f.text_field :end_latitude, :class=>"form-control input-sm"
+    .col-md-4
+      .form-group.hidden
+        label Latitude
+        = f.text_field :end_longitude, :class=>"form-control input-sm"
+  .row
     .col-md-3
       .form-group
-        label Latitude
-        = f.text_field :latitude, :class=>"form-control input-sm"
+        label No Of Ways
+        = f.text_field :no_of_way, :class => "form-control input-sm"
 
-  =render 'admin/partials/box_footer', :back_url =>"/admin/routes"
+
+  .row  
+    .col-md-12
+      .btn-group.pull-right
+        a.btn.btn-default href="/admin/routes" Back
+        = f.submit "Save", :class => "btn btn-success"
