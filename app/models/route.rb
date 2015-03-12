@@ -11,4 +11,8 @@ class Route < ActiveRecord::Base
   # Relationship
   has_many :fares
 
+  def full_route
+    self.start_name+" --- "+self.end_name
+  end
+
 end

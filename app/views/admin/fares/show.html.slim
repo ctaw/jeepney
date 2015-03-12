@@ -1,0 +1,35 @@
+.block-flat
+  .header
+    a.btn.btn-default.pull-right href="/admin/fares" Back
+    h4 Jeepney Fare
+  .content
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-body
+            p.title Details
+            hr
+            p.desc-label = @fare.route.full_route
+            p.caption
+              | Start :
+              = @fare.route.start_name
+            p.caption
+              | End :
+              = @fare.route.end_name
+            br
+            p.desc-label Fare
+            p.caption
+              | Regular :
+              = @fare.regular_fare
+            p.caption
+              | Discounted :
+              = @fare.discounted_fare
+
+            br
+            p.desc-label Others
+            p.caption
+              | Landmark :
+              = @fare.landmark
+            p.caption
+              | Distance :
+              = @fare.distance
