@@ -1,11 +1,29 @@
 .block-flat
   .header
     a.btn.btn-default.pull-right href="/admin/routes" Back
-    h4 Routes
+    h4 Jeepney Routes
   .content
     .row
       .col-md-12
         .panel.panel-default
           .panel-body
-            p.title = @route.start_name + " to " + @route.end_name
+            p.title Details
             hr
+            p.desc-label = @route.start_name
+            p.caption
+              | Latitude :
+              = @route.start_latitude
+            p.caption
+              | Longitude :
+              = @route.start_longitude
+            br
+            p.desc-label = @route.end_name
+            p.caption
+              | Latitude :
+              = @route.end_latitude
+            p.caption
+              | Longitude :
+              = @route.end_longitude
+
+            br
+            p.description = "Ride: #{@route.no_of_way}"

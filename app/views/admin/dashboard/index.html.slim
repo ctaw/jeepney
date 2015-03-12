@@ -1,3 +1,23 @@
-=render 'admin/partials/non_ajax_notice'
-h1.page-heading DASHBOARD 
-=render 'admin/partials/dashboard_r1'
+script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
+
+input#start_address style=("width: 500px;") type="text" /
+
+input#end_address style=("width: 500px;") type="text" /
+
+
+script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"
+
+javascript:
+  var autocomplete = new google.maps.places.Autocomplete($("#start_address")[0], {});
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      var place = autocomplete.getPlace();
+      console.log(place.address_components);
+  });
+
+  var autocomplete = new google.maps.places.Autocomplete($("#end_address")[0], {});
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      var place = autocomplete.getPlace();
+      console.log(place.address_components);
+  });

@@ -1,42 +1,40 @@
-= form_for [:admin,@route], :remote=>true do |f|
+= form_for [:admin,@route] do |f|
   .row
-    .col-md-12
-    
-  .row
-    .col-md-4
+    .col-md-8
       .form-group
-        label Start Location
-        = f.text_field :start_name, :class=>"form-control input-sm required"
-    .col-md-4
-      .form-group.hidden
-        label Longitude
-        = f.text_field :start_latitude, :class=>"form-control input-sm"
-    .col-md-4
-      .form-group.hidden
-        label Latitude
-        = f.text_field :start_longitude, :class=>"form-control input-sm"
+        label Start Point
+        = f.text_field :start_name, :class=>"form-control input-sm required", :id=>"start_address", :autocomplete => :one
   .row
-    .col-md-4
+    .col-md-8
       .form-group
-        label End Location
-        = f.text_field :end_name, :class=>"form-control input-sm required"
-    .col-md-4
-      .form-group.hidden
-        label Longitude
-        = f.text_field :end_latitude, :class=>"form-control input-sm"
-    .col-md-4
-      .form-group.hidden
-        label Latitude
-        = f.text_field :end_longitude, :class=>"form-control input-sm"
+        label End Point
+        = f.text_field :end_name, :class=>"form-control input-sm required", :id=>"end_address", :autocomplete => :one
   .row
     .col-md-3
       .form-group
         label No Of Ways
         = f.text_field :no_of_way, :class => "form-control input-sm"
-
+  
 
   .row  
     .col-md-12
       .btn-group.pull-right
         a.btn.btn-default href="/admin/routes" Back
         = f.submit "Save", :class => "btn btn-success"
+
+script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"
+
+javascript:
+  var autocomplete = new google.maps.places.Autocomplete($("#start_address")[0], {});
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      var place = autocomplete.getPlace();
+      console.log(place.address_components);
+  });
+
+  var autocomplete = new google.maps.places.Autocomplete($("#end_address")[0], {});
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      var place = autocomplete.getPlace();
+      console.log(place.address_components);
+  });

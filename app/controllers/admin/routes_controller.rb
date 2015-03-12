@@ -30,14 +30,26 @@ class Admin::RoutesController < AdminController
   end
 
   def create
+    @start_name = params[:route][:start_name]
+    @end_name = params[:route][:end_name]
+
+    start_coords = Geocoder.coordinates(@start_name)
+    end_coords = Geocoder.coordinates(@end_name)
+
     @route = Route.new(route_params)
-    respond_to do |format|
-        if @route.save
-          format.js { render :create }
-        else
-          format.js { render :error }
-        end
-      end
+
+    # Parameters 
+    @route.start_latitude = start_coords[0]
+    @route.start_longitude = start_coords[1]
+    @route.end_latitude = end_coords[0]
+    @route.end_longitude = end_coords[1]
+    
+    if @route.save
+      redirect_to "/admin/routes"
+    else
+      render :new
+    end
+
   end
 
   def destroy
