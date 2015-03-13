@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  layout :layout_by_resource
-
   before_filter :cors_preflight_check
   after_filter :cors_set_access_control_headers
+
+  layout :layout_by_resource
   
   def after_sign_in_path_for(resource)
       "/admin/dashboard"
