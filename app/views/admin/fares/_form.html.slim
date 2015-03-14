@@ -4,15 +4,23 @@
       .form-group
         label Route
         = f.select "route_id", options_from_collection_for_select(@routes, "id","full_route", f.object.route_id), {:prompt => 'Select Route'}, { :class => 'form-control input-sm' }
+  .row.fare-table.hidden
+    .col-md-6
+      table.table-condesed.table#jeepneyRoute
+        thead
+          tr
+            th Regular Fare
+            th Discounted Fare
+        tbody
   .row
     .col-md-6
       .form-group
-        label Regular Fare
-        = f.text_field :regular_fare, :class => "form-control input-sm"
+        label Total Regular Fare
+        = f.text_field :total_regular_fare, :class => "form-control input-sm"
     .col-md-6
       .form-group
-        label Discounted Fare
-        = f.text_field :discounted_fare, :class => "form-control input-sm"
+        label Total Discounted Fare
+        = f.text_field :total_discounted_fare, :class => "form-control input-sm"
   .row
     .col-md-6
       .form-group
@@ -28,3 +36,15 @@
       .btn-group.pull-right
         a.btn.btn-default href="/admin/fares" Back
         = f.submit "Save", :class => "btn btn-success"
+javascript:
+  $(document).ready(function() {
+    $('#fare_route_id').change(function() {
+      $.ajax({
+        url: "#{matrix_admin_fares_path}",
+        data: {
+          route_id : $('#fare_route_id').val()
+        },
+        dataType: "script"
+      });
+    });
+  });

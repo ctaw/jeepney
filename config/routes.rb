@@ -8,7 +8,11 @@ Rails.application.routes.draw do
     resources :dashboard
     resources :routes
     resources :jeepney_routes
-    resources :fares
+    resources :fares do 
+      collection do 
+        get "matrix"
+      end
+    end
   end
 
   namespace :api do

@@ -4,7 +4,7 @@ class Admin::FaresController < AdminController
   before_action :look_ups, :only =>[:edit, :update, :new, :create]
 
   def index
-    @fares = Fare.select("id,route_id,regular_fare,discounted_fare").
+    @fares = Fare.select("id,route_id,total_regular_fare,total_discounted_fare").
     paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -41,6 +41,11 @@ class Admin::FaresController < AdminController
     redirect_to action: :index
   end
 
+  def matrix
+    puts ">>>>>>>>>>>>>>"
+    @routes = Route.select("regular_fare, discounted_fare").where("route_id =?", params[:route_id])
+  end
+
   private
 
   def set_fare_id
@@ -52,7 +57,7 @@ class Admin::FaresController < AdminController
   end
 
   def fare_params
-    params.require(:fare).permit(:route_id, :regular_fare, :discounted_fare, :landmark, :distance)  
+    params.require(:fare).permit(:route_id, :total_regular_fare, :total_discounted_fare, :landmark, :distance)  
   end
 
 end
