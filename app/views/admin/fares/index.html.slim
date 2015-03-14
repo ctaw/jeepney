@@ -24,8 +24,8 @@
               -@fares.each do |fare|
                 tr
                   td = fare.route_id
-                  td = fare.regular_fare
-                  td = fare.discounted_fare
+                  td = fare.total_regular_fare
+                  td = fare.total_discounted_fare
                   td
                     .btn-group.pull-right
                       a.btn.btn-info href="/admin/fares/#{fare.id}"
