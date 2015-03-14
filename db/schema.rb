@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314014647) do
+ActiveRecord::Schema.define(version: 20150314024924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,12 @@ ActiveRecord::Schema.define(version: 20150314014647) do
     t.float    "discounted_fare"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "list_fares", force: true do |t|
+    t.integer "kilometer"
+    t.float   "regular_fare"
+    t.float   "discounted_fare"
   end
 
   create_table "routes", force: true do |t|

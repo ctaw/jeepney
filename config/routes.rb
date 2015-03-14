@@ -13,11 +13,13 @@ Rails.application.routes.draw do
         get "matrix"
       end
     end
+    resources :list_fares
   end
 
   namespace :api do
     resources :routes, :defaults => { :format => 'xml' }
     resources :fares, :defaults => { :format => 'xml' }
+    resources :list_fares, :defaults => { :format => 'xml' }
   end
   
 end

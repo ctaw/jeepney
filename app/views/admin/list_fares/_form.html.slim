@@ -1,0 +1,20 @@
+= form_for [:admin,@list_fare] do |f|
+  .row
+    .col-md-3
+      .form-group
+        label Kilometer
+        = f.text_field :kilometer,:class=>"form-control input-sm required"
+    .col-md-3
+      .form-group
+        label Regular Fare
+        = f.text_field :regular_fare,:class=>"form-control input-sm required"
+    .col-md-3
+      .form-group
+        label Discounted Fare
+        = f.text_field :discounted_fare,:class=>"form-control input-sm"
+
+  .row  
+    .col-md-12
+      .btn-group.pull-right
+        a.btn.btn-default href="/admin/list_fares" Back
+        = f.submit "Save", :class => "btn btn-success"
