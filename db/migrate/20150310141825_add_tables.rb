@@ -17,8 +17,8 @@ class AddTables < ActiveRecord::Migration
 
     create_table :fares do |t|
       t.integer :route_id
-      t.string :regular_fare
-      t.string :discounted_fare
+      t.float :total_regular_fare
+      t.float :total_discounted_fare
       t.text :landmark
       t.string :distance
       t.timestamps

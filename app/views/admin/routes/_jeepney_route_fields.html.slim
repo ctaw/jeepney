@@ -1,0 +1,25 @@
+.nested-fields
+  .row.nested
+    .col-md-3
+      .form-group
+        label 
+          | Name
+        = f.text_field :jeep_name, :class=>"form-control input-sm"
+    .col-md-2
+      .form-group
+        label 
+          | Regular Fare
+        = f.text_field :regular_fare, :class=>"form-control input-sm"
+    .col-md-2
+      .form-group
+        label 
+          | Discounted Fare
+        = f.text_field :discounted_fare, :class=>"form-control input-sm"
+
+    .col-md-1
+      .form-group
+        label &nbsp;
+        br
+        = link_to_remove_association "X".html_safe, f, :type=>"button", :confirm => "Are you sure?", :class => "btn btn-danger remove-sub-categories push-left-20 "
+        
+

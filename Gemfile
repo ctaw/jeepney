@@ -54,3 +54,5 @@ gem 'will_paginate'
 
 gem 'geocoder' # Plan B
 
+# nested form
+gem 'cocoon'

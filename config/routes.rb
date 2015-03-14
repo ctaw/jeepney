@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do 
     resources :dashboard
     resources :routes
+    resources :jeepney_routes
     resources :fares
   end
 

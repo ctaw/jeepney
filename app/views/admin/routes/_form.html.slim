@@ -1,27 +1,31 @@
 script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
-= form_for [:admin,@route] do |f|
-  .row
-    .col-md-8
-      .form-group
-        label Start Point
-        = f.text_field :start_name, :class=>"form-control input-sm required", :id=>"start_address", :autocomplete => :one
-  .row
-    .col-md-8
-      .form-group
-        label End Point
-        = f.text_field :end_name, :class=>"form-control input-sm required", :id=>"end_address", :autocomplete => :one
-  .row
-    .col-md-3
-      .form-group
-        label No Of Ways
-        = f.text_field :no_of_way, :class => "form-control input-sm"
-  
-
-  .row  
-    .col-md-12
-      .btn-group.pull-right
-        a.btn.btn-default href="/admin/routes" Back
-        = f.submit "Save", :class => "btn btn-success"
+= form_for [:admin, @route] do |f|
+  .form-horizontal
+    .form-group
+      .col-md-8
+        label.control-label Departure
+        = f.text_field :start_name, :class=>"form-control input-sm required", :id=>"start_address", :autocomplete => :on
+    .form-group
+      .col-md-8
+        label.control-label Destination
+        = f.text_field :end_name, :class=>"form-control input-sm required", :id=>"end_address", :autocomplete => :on
+    .form-group
+      .col-md-8
+        label.control-label No of Ways
+        = f.text_field :no_of_way, :class => "form-control input-sm required"
+    .form-group
+      .col-md-8
+        hr
+        = link_to_add_association '<i class="fa fa-plus"></i> Add Jeepney'.html_safe, f, :jeepney_routes,
+        :class=>"btn btn-add pull-right", :data => {"association-insertion-method" => "append", "association-insertion-node" =>".jeepney_routes"}
+    br
+    br
+    .jeepney_routes
+      = f.fields_for :jeepney_routes do |f|
+        = render 'jeepney_route_fields', :f=>f
+  .btn-group.pull-right
+    a.btn.btn-default href="/admin/routes" Back
+    = f.submit "Save", :class => "btn btn-success"
 
 script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"
 
@@ -39,3 +43,45 @@ javascript:
       var place = autocomplete.getPlace();
       console.log(place.address_components);
   });
+
+/ script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"
+/ = form_for [:admin,@route] do |f|
+/   .row
+/     .col-md-8
+/       .form-group
+/         label Start Point
+/         = f.text_field :start_name, :class=>"form-control input-sm required", :id=>"start_address", :autocomplete => :one
+/   .row
+/     .col-md-8
+/       .form-group
+/         label End Point
+/         = f.text_field :end_name, :class=>"form-control input-sm required", :id=>"end_address", :autocomplete => :one
+/   .row
+/     .col-md-3
+/       .form-group
+/         label No Of Ways
+/         = f.text_field :no_of_way, :class => "form-control input-sm"
+  
+
+/   .row  
+/     .col-md-12
+/       .btn-group.pull-right
+/         a.btn.btn-default href="/admin/routes" Back
+/         = f.submit "Save", :class => "btn btn-success"
+
+/ script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places&language=en-AU"
+
+/ javascript:
+/   var autocomplete = new google.maps.places.Autocomplete($("#start_address")[0], {});
+
+/     google.maps.event.addListener(autocomplete, 'place_changed', function() {
+/       var place = autocomplete.getPlace();
+/       console.log(place.address_components);
+/   });
+
+/   var autocomplete = new google.maps.places.Autocomplete($("#end_address")[0], {});
+
+/     google.maps.event.addListener(autocomplete, 'place_changed', function() {
+/       var place = autocomplete.getPlace();
+/       console.log(place.address_components);
+/   });

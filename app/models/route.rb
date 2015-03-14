@@ -9,7 +9,10 @@ class Route < ActiveRecord::Base
   # after_validation :geocode
 
   # Relationship
+  has_many :jeepney_routes, :dependent => :destroy
   has_many :fares
+
+  accepts_nested_attributes_for :jeepney_routes, :reject_if => :all_blank, :allow_destroy => true
 
   def full_route
     self.start_name+" --- "+self.end_name
