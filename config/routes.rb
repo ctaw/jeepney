@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :routes, :defaults => { :format => 'xml' }
+    resources :jeepney_routes, :defaults => { :format => 'xml' }
     resources :jeepney_fares, :defaults => { :format => 'xml' }
     resources :fares, :defaults => { :format => 'xml' }
   end
