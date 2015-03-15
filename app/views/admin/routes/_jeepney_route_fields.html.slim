@@ -3,18 +3,23 @@
     .col-md-3
       .form-group
         label 
-          | Name
-        = f.text_field :jeep_name, :class=>"form-control input-sm"
+          | Jeepney's Signboard
+        = f.text_field :sign_board, :class=>"form-control input-sm"
+    .col-md-3
+      .form-group
+        label 
+          | Polyline
+        = f.text_area :encoded_polyline, :class=>"form-control input-sm", :rows=>3
+    .col-md-3
+      .form-group
+        label 
+          | Level
+        = f.text_area :encoded_level, :class=>"form-control input-sm", :rows=>3
     .col-md-2
       .form-group
         label 
-          | Regular Fare
-        = f.text_field :regular_fare, :class=>"form-control input-sm"
-    .col-md-2
-      .form-group
-        label 
-          | Discounted Fare
-        = f.text_field :discounted_fare, :class=>"form-control input-sm"
+          | Landmark
+        = f.text_area :landmark, :class=>"form-control input-sm", :rows=>3
 
     .col-md-1
       .form-group

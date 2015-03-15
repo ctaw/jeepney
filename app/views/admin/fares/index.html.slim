@@ -5,7 +5,7 @@
     a.btn.btn-primary.pull-right href="/admin/fares/new"
       i.fa.fa-plus
       | Add New Fare
-    h3 Fares
+    h3 List of Fares
 
   .content
     -if @fares.blank?
@@ -16,6 +16,7 @@
           thead.no-border
             tr
               th #
+              th Kilometer
               th Regular  
               th Discounted
               th
@@ -23,13 +24,12 @@
             tr
               -@fares.each do |fare|
                 tr
-                  td = fare.route_id
-                  td = fare.total_regular_fare
-                  td = fare.total_discounted_fare
+                  td = fare.id
+                  td = fare.kilometer
+                  td = fare.regular_fare
+                  td = fare.discounted_fare
                   td
                     .btn-group.pull-right
-                      a.btn.btn-info href="/admin/fares/#{fare.id}"
-                        i.fa.fa-search
                       a.btn.btn-success href="/admin/fares/#{fare.id}/edit"
                         i.fa.fa-pencil
                       a.btn.btn-danger href="/admin/fares/#{fare.id}" data-confirm="Are you sure?" data-method="delete" rel="nofollow"

@@ -1,10 +1,9 @@
 class Admin::FaresController < AdminController
 
-  before_action :set_fare_id, :only => [:edit, :update, :show, :destroy]
-  before_action :look_ups, :only =>[:edit, :update, :new, :create]
-
+  before_action :look_ups, :only => [:edit, :update, :show, :destroy]
+  
   def index
-    @fares = Fare.select("id,route_id,total_regular_fare,total_discounted_fare").
+    @fares = Fare.select("id,kilometer,regular_fare, discounted_fare").
     paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -12,27 +11,28 @@ class Admin::FaresController < AdminController
     @fare = Fare.new
   end
 
-  def create 
-    @fare = Fare.new(fare_params)
-    if @fare.save
-      redirect_to "/admin/fares"
-    else
-      render :new
-    end   
-  end
-
-  def show    
+  def show
   end
 
   def edit
   end
 
-  def update 
+  def update
     @fare = Fare.find(params[:id])
+    
     if @fare.update(fare_params)
-      redirect_to "/admin/fares", notice: 'Fare was successfully updated.'
+      redirect_to "/admin/fares"
     else
       render :edit
+    end
+  end
+
+  def create
+    @fare = Fare.new(fare_params)
+    if @fare.save
+      redirect_to "/admin/fares"
+    else
+      render :new
     end
   end
 
@@ -41,23 +41,13 @@ class Admin::FaresController < AdminController
     redirect_to action: :index
   end
 
-  def matrix
-    puts ">>>>>>>>>>>>>>"
-    @routes = Route.select("regular_fare, discounted_fare").where("route_id =?", params[:route_id])
-  end
-
   private
 
-  def set_fare_id
+  def look_ups
     @fare = Fare.find(params[:id])
   end
 
-  def look_ups
-    @routes = Route.select("id, start_name, end_name").order("start_name ASC")
-  end
-
   def fare_params
-    params.require(:fare).permit(:route_id, :total_regular_fare, :total_discounted_fare, :landmark, :distance)  
+    params.require(:fare).permit(:kilometer, :regular_fare, :discounted_fare)
   end
-
 end

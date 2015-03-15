@@ -17,28 +17,30 @@ ActiveRecord::Schema.define(version: 20150314024924) do
   enable_extension "plpgsql"
 
   create_table "fares", force: true do |t|
-    t.integer  "route_id"
-    t.float    "total_regular_fare"
-    t.float    "total_discounted_fare"
-    t.text     "landmark"
-    t.string   "distance"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "jeepney_routes", force: true do |t|
-    t.integer  "route_id"
-    t.string   "jeep_name"
+    t.integer  "kilometer"
     t.float    "regular_fare"
     t.float    "discounted_fare"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "list_fares", force: true do |t|
-    t.integer "kilometer"
-    t.float   "regular_fare"
-    t.float   "discounted_fare"
+  create_table "jeepney_fares", force: true do |t|
+    t.integer  "jeepney_route_id"
+    t.float    "regular_fare"
+    t.float    "discounted_fare"
+    t.float    "distance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "jeepney_routes", force: true do |t|
+    t.integer  "route_id"
+    t.string   "sign_board"
+    t.text     "encoded_polyline"
+    t.text     "encoded_level"
+    t.string   "landmark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "routes", force: true do |t|
@@ -46,8 +48,6 @@ ActiveRecord::Schema.define(version: 20150314024924) do
     t.string   "end_name"
     t.integer  "no_of_way"
     t.string   "route_distance"
-    t.text     "encoded_polyline"
-    t.text     "encoded_level"
     t.float    "start_latitude"
     t.float    "start_longitude"
     t.float    "end_latitude"

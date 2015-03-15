@@ -56,3 +56,5 @@ gem 'geocoder' # Plan B
 
 # nested form
 gem 'cocoon'
+
+gem 'gmaps4rails'

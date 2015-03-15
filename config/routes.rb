@@ -8,18 +8,13 @@ Rails.application.routes.draw do
     resources :dashboard
     resources :routes
     resources :jeepney_routes
-    resources :fares do 
-      collection do 
-        get "matrix"
-      end
-    end
-    resources :list_fares
+    resources :jeepney_fares
+    resources :fares
   end
 
   namespace :api do
     resources :routes, :defaults => { :format => 'xml' }
     resources :fares, :defaults => { :format => 'xml' }
-    resources :list_fares, :defaults => { :format => 'xml' }
   end
   
 end

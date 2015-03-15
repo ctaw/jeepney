@@ -5,9 +5,6 @@ class AddTables < ActiveRecord::Migration
       t.string :end_name
       t.integer :no_of_way
       t.string :route_distance
-      # Plan A
-      t.text :encoded_polyline
-      t.text :encoded_level
       t.float :start_latitude
       t.float :start_longitude
       t.float :end_latitude
@@ -15,12 +12,21 @@ class AddTables < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :fares do |t|
+    create_table :jeepney_routes do |t|
+      # Plan A
       t.integer :route_id
-      t.float :total_regular_fare
-      t.float :total_discounted_fare
-      t.text :landmark
-      t.string :distance
+      t.string :sign_board # Jeepney's signboard
+      t.text :encoded_polyline
+      t.text :encoded_level
+      t.string :landmark
+      t.timestamps
+    end
+
+    create_table :jeepney_fares do |t|
+      t.integer :jeepney_route_id
+      t.float :regular_fare
+      t.float :discounted_fare
+      t.float :distance
       t.timestamps
     end
   end

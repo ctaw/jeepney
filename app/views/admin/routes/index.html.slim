@@ -17,6 +17,7 @@
             tr
               th Departure 
               th Arrival
+              th # of rides
               th
           tbody.no-border-y
             tr
@@ -24,6 +25,7 @@
                 tr
                   td = r.start_name
                   td = r.end_name
+                  td = r.no_of_way
                   td
                     .btn-group.pull-right
                       a.btn.btn-info href="/admin/routes/#{r.id}"
