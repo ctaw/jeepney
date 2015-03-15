@@ -5,8 +5,4 @@ class Api::FaresController < ApplicationController
     respond_with(@fares = Fare.all)
   end
 
-  def show
-    respond_with(@fares = Fare.where("route_id =?", params[:id])) 
-  end
-  
 end
