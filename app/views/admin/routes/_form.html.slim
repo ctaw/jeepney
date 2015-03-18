@@ -4,13 +4,25 @@ a href="https://developers.google.com/maps/documentation/utilities/polylineutili
 = form_for [:admin, @route] do |f|
   .form-horizontal
     .form-group
-      .col-md-12
+      .col-md-4
         label.control-label Departure
         = f.text_field :start_name, :class=>"form-control input-sm required", :id=>"start_address", :autocomplete => :on
+      .col-md-4
+        label.control-label Latitude Departure
+        = f.text_field :start_latitude, :class=>"form-control input-sm required"
+      .col-md-4
+        label.control-label Longitude Departure
+        = f.text_field :start_longitude, :class=>"form-control input-sm required"
     .form-group
-      .col-md-12
+      .col-md-4
         label.control-label Destination
         = f.text_field :end_name, :class=>"form-control input-sm required", :id=>"end_address", :autocomplete => :on
+      .col-md-4
+        label.control-label Latitude Destination
+        = f.text_field :end_latitude, :class=>"form-control input-sm required"
+      .col-md-4
+        label.control-label Longitude Destination
+        = f.text_field :end_longitude, :class=>"form-control input-sm required"
     .form-group
       .col-md-12
         label.control-label No of Jeepney Rides
