@@ -48,6 +48,6 @@ class Admin::FaresController < AdminController
   end
 
   def fare_params
-    params.require(:fare).permit(:kilometer, :regular_fare, :discounted_fare)
+    params.require(:fare).permit(:jeepney, :kilometer, :regular_fare, :discounted_fare)
   end
 end
