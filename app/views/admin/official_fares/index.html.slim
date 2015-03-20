@@ -1,0 +1,33 @@
+=render 'admin/partials/notice'
+
+.block-flat
+  .header
+    a.btn.btn-primary.pull-right href="/admin/official_fares/new"
+      i.fa.fa-plus
+      | Add New Fare Matrix
+    h3 List of Fares
+
+  .content
+    -if @official_fares.blank?
+      =render '/admin/partials/no_records'
+    -else
+      .table-responsive.center-table
+        table.table.no-border.hover
+          thead.no-border
+            tr
+              th #
+              th Routes
+              th
+          tbody.no-border-y
+            tr
+              -@official_fares.each do |official_fare|
+                tr
+                  td = official_fare.id
+                  td = official_fare.route_name
+                  td
+                    .btn-group.pull-right
+                      a.btn.btn-success href="/admin/official_fares/#{official_fare.id}/edit"
+                        i.fa.fa-pencil
+                      a.btn.btn-danger href="/admin/official_fares/#{official_fare.id}" data-confirm="Are you sure?" data-method="delete" rel="nofollow"
+                        i.fa.fa-trash-o
+    =render 'admin/partials/pagination',:list=>@official_fares

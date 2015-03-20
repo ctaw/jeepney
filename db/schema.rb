@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150319232851) do
+ActiveRecord::Schema.define(version: 20150320030021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 20150319232851) do
     t.string   "landmark"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "official_fares", force: true do |t|
+    t.string "route_name"
+    t.text   "link_file"
   end
 
   create_table "routes", force: true do |t|

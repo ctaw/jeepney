@@ -1,0 +1,16 @@
+= form_for [:admin,@official_fare] do |f|
+  .row
+    .col-md-3
+      .form-group
+        label Jeepney Route 
+        = f.text_field :route_name,:class=>"form-control input-sm required"
+    .col-md-8
+      .form-group
+        label Link
+        = f.text_area :link_file,:class=>"form-control input-sm required", :row=>"5"
+    
+  .row  
+    .col-md-12
+      .btn-group.pull-right
+        a.btn.btn-default href="/admin/official_fares" Back
+        = f.submit "Save", :class => "btn btn-success"
