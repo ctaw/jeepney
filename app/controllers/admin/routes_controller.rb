@@ -21,16 +21,16 @@ class Admin::RoutesController < AdminController
   def update
     @route = Route.find(params[:id])
 
-    @start_name = params[:route][:start_name]
-    @end_name = params[:route][:end_name]
+   #@start_name = params[:route][:start_name]
+   #@end_name = params[:route][:end_name]
 
-    start_coords = Geocoder.coordinates(@start_name)
-    end_coords = Geocoder.coordinates(@end_name)
+   #start_coords = Geocoder.coordinates(@start_name)
+   #end_coords = Geocoder.coordinates(@end_name)
 
-    @route.start_latitude = start_coords[0]
-    @route.start_longitude = start_coords[1]
-    @route.end_latitude = end_coords[0]
-    @route.end_longitude = end_coords[1]
+   #@route.start_latitude = start_coords[0]
+   #@route.start_longitude = start_coords[1]
+   #@route.end_latitude = end_coords[0]
+   #@route.end_longitude = end_coords[1]
     
     if route.update(route_params)
       redirect_to "/admin/routes"
