@@ -4,14 +4,6 @@
       .form-group
         label Route
         = f.select "jeepney_route_id", options_from_collection_for_select(@jeepney_routes, "id","sign_board", f.object.jeepney_route_id), {:prompt => 'Select Route'}, { :class => 'form-control input-sm' }
-  .row.fare-table.hidden
-    .col-md-6
-      table.table-condesed.table#jeepneyRoute
-        thead
-          tr
-            th Regular Fare
-            th Discounted Fare
-        tbody
   .row
     .col-md-6
       .form-group
@@ -26,6 +18,10 @@
       .form-group
         label Distance
         = f.text_field :distance, :class => "form-control input-sm"
+    .col-md-6
+      .form-group
+        label Link Official Fare
+        = f.text_area :link_file, :class => "form-control input-sm"
   .row  
     .col-md-12
       .btn-group.pull-right

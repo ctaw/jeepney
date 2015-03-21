@@ -52,7 +52,7 @@ class Admin::JeepneyFaresController < AdminController
   end
 
   def fare_params
-    params.require(:jeepney_fare).permit(:jeepney_route_id, :regular_fare, :discounted_fare, :distance)  
+    params.require(:jeepney_fare).permit(:jeepney_route_id, :regular_fare, :discounted_fare, :distance, :link_file)  
   end
 
 end
