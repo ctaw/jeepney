@@ -1,25 +1,32 @@
 .nested-fields
   .row.nested
+    .col-md-2
+      .form-group
+        label
+          | (Walking, Bus, Transit)
+        = f.text_field :title, :class=>"form-control input-sm"
     .col-md-3
       .form-group
         label 
-          | Jeepney's Signboard
-        = f.text_field :sign_board, :class=>"form-control input-sm"
-    .col-md-3
-      .form-group
-        label 
-          | Polyline
-        = f.text_area :encoded_polyline, :class=>"form-control input-sm", :rows=>3
-    .col-md-3
-      .form-group
-        label 
-          | Level
-        = f.text_area :encoded_level, :class=>"form-control input-sm", :rows=>3
+          | Directions
+        = f.text_area :direction, :class=>"form-control input-sm"
     .col-md-2
       .form-group
         label 
-          | Landmark
-        = f.text_area :landmark, :class=>"form-control input-sm", :rows=>3
+          | Regular Fare
+        = f.text_field :regular_fare, :class=>"form-control input-sm"
+    .col-md-2
+      .form-group
+        label 
+          | Discounted Fare
+        = f.text_field :regular_fare, :class=>"form-control input-sm"
+    .col-md-2
+      .form-group
+        label 
+          | Est. Time
+        = f.text_field :estimated_time, :class=>"form-control input-sm"
+        
+        
 
     .col-md-1
       .form-group

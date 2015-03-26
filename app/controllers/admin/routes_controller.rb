@@ -3,7 +3,7 @@ class Admin::RoutesController < AdminController
   before_action :look_ups, :only => [:edit, :update, :show, :destroy]
 
   def index
-    @routes = Route.select("id,start_name,end_name,no_of_way").
+    @routes = Route.select("id,start_name,end_name,sign_board").
     paginate(:page => params[:page], :per_page => 10)
   end
 
@@ -32,7 +32,7 @@ class Admin::RoutesController < AdminController
    #@route.end_latitude = end_coords[0]
    #@route.end_longitude = end_coords[1]
     
-    if route.update(route_params)
+    if @route.update(route_params)
       redirect_to "/admin/routes"
     else
       render :edit
@@ -74,6 +74,7 @@ class Admin::RoutesController < AdminController
   end
 
   def route_params
-    params.require(:route).permit(:start_name, :end_name, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :no_of_way, jeepney_routes_attributes: [:id, :route_id, :sign_board, :encoded_polyline, :encoded_level, :landmark, :_destroy])
+    # params.require(:route).permit(:start_name, :end_name, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :no_of_way, jeepney_routes_attributes: [:id, :route_id, :sign_board, :encoded_polyline, :encoded_level, :landmark, :_destroy])
+    params.require(:route).permit(:start_name, :end_name, :start_latitude, :start_longitude, :end_latitude, :end_longitude, :no_of_way, :sign_board, :encoded_polyline, :encoded_level, :landmark, :jeepney_fare, :link_file, :jeepney_direction, jeepney_routes_attributes: [:id, :route_id, :direction, :regular_fare, :discounted_fare, :estimated_time, :_destroy])
   end
 end

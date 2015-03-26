@@ -9,25 +9,33 @@ class AddTables < ActiveRecord::Migration
       t.float :start_longitude
       t.float :end_latitude
       t.float :end_longitude
+      t.string :sign_board
+      t.text :encoded_polyline
+      t.text :encoded_level
+      t.string :landmark
+      t.float :jeepney_fare
+      t.text :jeepney_direction
+      t.text :link_file
       t.timestamps
     end
 
     create_table :jeepney_routes do |t|
       # Plan A
       t.integer :route_id
-      t.string :sign_board # Jeepney's signboard
-      t.text :encoded_polyline
-      t.text :encoded_level
-      t.string :landmark
+      t.text :title
+      t.text :direction 
+      t.text :regular_fare
+      t.text :discounted_fare
+      t.text :estimated_time
       t.timestamps
     end
 
-    create_table :jeepney_fares do |t|
-      t.integer :jeepney_route_id
-      t.float :regular_fare
-      t.float :discounted_fare
-      t.float :distance
-      t.timestamps
-    end
+    # create_table :jeepney_fares do |t|
+    #   t.integer :jeepney_route_id
+    #   t.float :regular_fare
+    #   t.float :discounted_fare
+    #   t.float :distance
+    #   t.timestamps
+    # end
   end
 end

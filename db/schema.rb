@@ -22,27 +22,17 @@ ActiveRecord::Schema.define(version: 20150321001632) do
     t.float    "discounted_fare"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "jeepney"
-  end
-
-  create_table "jeepney_fares", force: true do |t|
-    t.integer  "jeepney_route_id"
-    t.float    "regular_fare"
-    t.float    "discounted_fare"
-    t.float    "distance"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "jeepney_routes", force: true do |t|
     t.integer  "route_id"
-    t.string   "sign_board"
-    t.text     "encoded_polyline"
-    t.text     "encoded_level"
-    t.string   "landmark"
+    t.text     "title"
+    t.text     "direction"
+    t.text     "regular_fare"
+    t.text     "discounted_fare"
+    t.text     "estimated_time"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "link_file"
   end
 
   create_table "official_fares", force: true do |t|
@@ -59,6 +49,13 @@ ActiveRecord::Schema.define(version: 20150321001632) do
     t.float    "start_longitude"
     t.float    "end_latitude"
     t.float    "end_longitude"
+    t.string   "sign_board"
+    t.text     "encoded_polyline"
+    t.text     "encoded_level"
+    t.string   "landmark"
+    t.float    "jeepney_fare"
+    t.text     "jeepney_direction"
+    t.text     "link_file"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

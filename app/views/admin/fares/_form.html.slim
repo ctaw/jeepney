@@ -1,18 +1,14 @@
 = form_for [:admin,@fare] do |f|
   .row
-    .col-md-3
-      .form-group
-        label Jeepney Route for
-        = f.text_field :jeepney,:class=>"form-control input-sm required"
-    .col-md-3
+    .col-md-4
       .form-group
         label Kilometer
         = f.text_field :kilometer,:class=>"form-control input-sm required"
-    .col-md-3
+    .col-md-4
       .form-group
         label Regular Fare
         = f.text_field :regular_fare,:class=>"form-control input-sm required"
-    .col-md-3
+    .col-md-4
       .form-group
         label Discounted Fare
         = f.text_field :discounted_fare,:class=>"form-control input-sm"
