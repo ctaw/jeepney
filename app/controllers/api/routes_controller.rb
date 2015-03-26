@@ -6,7 +6,7 @@ class Api::RoutesController < ApplicationController
   end
 
   def show
-    respond_with(@routes = JeepneyRoute.where("route_id =?", params[:id])) 
+    respond_with(@routes = Route.where("id =?", params[:id])) 
   end
   
 end
