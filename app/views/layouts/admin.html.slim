@@ -1,8 +1,8 @@
 doctype html
 html.no-touch
   head
-    title Jeepney Routes & Fare Assistance
-    
+    title Transportation
+
     = stylesheet_link_tag    "admin"
     = javascript_include_tag "admin"
     = favicon_link_tag '', rel: 'apple-touch-icon', type: 'image/png'
@@ -20,11 +20,5 @@ html.no-touch
           .row
             .col-sm-12.col-md-12
               = yield
-    
+
     =render '/admin/partials/loading'
- 
-
-  
-
-
-
